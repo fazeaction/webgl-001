@@ -1,16 +1,16 @@
-/*
-  code by @mattdesl (https://github.com/mattdesl/webpack-three-hmr-test)
-
-  An example of simple inline shaders,
-  without using glslify.
-  
-  The "three-hmr" boilerplate will eventually
-  be removed, and instrumented automatically by
-  a babel transform.
+/**
+ * code by @mattdesl (https://github.com/mattdesl/webpack-three-hmr-test)
+ *
+ *  An example of simple inline shaders,
+ * without using glslify.
+ *
+ *  The "three-hmr" boilerplate will eventually
+ *  be removed, and instrumented automatically by
+ *  a babel transform.
  */
 
-const hmr = require('three-hmr/three-hmr')
-const cache = hmr.cache(__filename)
+const hmr = require( 'three-hmr/three-hmr' )
+const cache = hmr.cache( __filename )
 
 const vertexShader = `
   attribute vec4 position;
@@ -45,19 +45,25 @@ const fragmentShader = `
   }
 `.trim()
 
-module.exports = function (opt) {
-  const material = new THREE.RawShaderMaterial({
-    vertexShader, fragmentShader
-  })
-  hmr.enable(cache, material)
-  return material
+module.exports = function ( opt ) {
+
+	const material = new THREE.RawShaderMaterial( {
+		vertexShader, fragmentShader
+	} )
+	hmr.enable( cache, material )
+	return material
+
 }
 
-if (module.hot) {
-  module.hot.accept(err => {
-    if (err) throw errr
-  })
-  hmr.update(cache, {
-    vertexShader, fragmentShader
-  })
+if ( module.hot ) {
+
+	module.hot.accept( err => {
+
+		if ( err ) throw errr
+
+	} )
+	hmr.update( cache, {
+		vertexShader, fragmentShader
+	} )
+
 }

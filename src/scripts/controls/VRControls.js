@@ -1,4 +1,5 @@
-var THREE = require('three');
+var THREE = require( 'three' );
+
 /**
  * @author dmarcos / https://github.com/dmarcos
  * @author mrdoob / http://mrdoob.com
@@ -15,10 +16,15 @@ THREE.VRControls = function ( object, onError ) {
 		// Exclude Cardboard position sensor if Oculus exists.
 
 		var oculusDevices = devices.filter( function ( device ) {
-			if ( device.deviceName === undefined ){
+
+			if ( device.deviceName === undefined ) {
+
 				return;
-			}else{
+
+			}else {
+
 				return device.deviceName.toLowerCase().indexOf( 'oculus' ) !== - 1;
+
 			}
 
 		} );
